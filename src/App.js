@@ -1,28 +1,27 @@
 import './App.css';
-
+import { useSelector } from 'react-redux';
+import {useDispatch} from 'react-redux';
+import {Inc,Dec} from './states/reducer/index';
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src="Octocat.png" className="App-logo" alt="logo" />
-        <p>
-          GitHub Codespaces <span className="heart">♥️</span> React
-        </p>
-        <p className="small">
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </p>
-      </header>
-    </div>
+  const curstate=useSelector((state)=>state.number);
+  const dispatch=useDispatch();
+  return (<>
+     <h1>react redux tutorial</h1>
+      <div style={{display:'flex',width:'100%',alignItems:'center',flexDirection:'column'}}>
+    
+       <h1>{curstate}</h1>
+       <div> 
+      <button onClick={()=>dispatch(Inc(10))}>Inc</button>
+      <button onClick={()=>dispatch(Dec(5))}>Dec</button>
+      </div>
+    
+        </div>
+ 
+  
+  
+  </>
+ 
+
   );
 }
 
